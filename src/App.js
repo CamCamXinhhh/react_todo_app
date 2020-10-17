@@ -21,7 +21,7 @@ class App extends Component {
           isFinish: true
         },
         {
-          id: 1,
+          id: 3,
           content: 'Learn MAS291 & do homework',
           isFinish: false
         },
@@ -31,13 +31,34 @@ class App extends Component {
 
   }
 
+  addTodo = todo => {
+    const todosChanged = [...this.state.todos];
+    todosChanged.push(todo);
+    this.setState({
+      todos: todosChanged
+    })
+  }
+
+  changeATodoStatus = todoId => {
+    const todosChanged = [...this.state.todos];
+    const index = todosChanged.findIndex(todo => todo.id === todoId);
+    todosChanged[index].isFinish = !todosChanged[index].isFinish;
+    this.setState({
+      todos: todosChanged
+    })
+
+  }
+
   render() {
     return (
       <div className="p-5">
         <Header />
-        <TodoForm />
+        <TodoForm addTodo={this.addTodo} />
         <FilterStatus />
-        <TodoList />
+        <TodoList
+          todos={this.state.todos}
+          changeATodoStatus={this.changeATodoStatus}
+        />
       </div>
     )
   }

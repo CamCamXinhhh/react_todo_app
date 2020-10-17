@@ -12,10 +12,10 @@ const FilterStatus = () => {
         minWidth: '90px'
     }
     return (
-        <div style={filterContainer}>
+        <div style={filterContainer} className="mb-3">
             <button style={btn} type="button" className="btn btn-primary">All</button>
-            <button style={btn} type="button" class="btn btn-success">Active</button>
-            <button style={btn} type="button" class="btn btn-dark">Finished</button>
+            <button style={btn} type="button" className="btn btn-success">Active</button>
+            <button style={btn} type="button" className="btn btn-dark">Finished</button>
         </div>
     )
 }
