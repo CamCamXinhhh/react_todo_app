@@ -49,14 +49,40 @@ class App extends Component {
 
   }
 
+  changeDisplayFilter = filter => {
+    let changedFilter = { ...this.state.filter };
+    changedFilter = filter;
+    this.setState({
+      filter: changedFilter
+    })
+  }
+
+  filterTodoList = () => {
+    let todos = [...this.state.todos];
+    const { filter } = this.state;
+    console.log(filter);
+    switch (filter) {
+      case 'active':
+        todos = todos.filter(todo => todo.isFinish === false);
+        break;
+      case 'finish':
+        todos = todos.filter(todo => todo.isFinish === true);
+        break;
+      default:
+
+        break;
+    }
+    return todos;
+  }
+
   render() {
     return (
       <div className="p-5">
         <Header />
         <TodoForm addTodo={this.addTodo} />
-        <FilterStatus />
+        <FilterStatus changeDisplayFilter={this.changeDisplayFilter} />
         <TodoList
-          todos={this.state.todos}
+          filterTodoList={this.filterTodoList}
           changeATodoStatus={this.changeATodoStatus}
         />
       </div>

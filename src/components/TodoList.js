@@ -1,11 +1,10 @@
 import React from 'react';
 
-const TodoList = ({ todos, changeATodoStatus }) => {
+const TodoList = ({ filterTodoList, changeATodoStatus }) => {
     const handleOnChange = (id) => {
-
         changeATodoStatus(id);
     }
-
+    const todos = filterTodoList();
     const todoList = todos.map((todo, index) => {
         return (
 
@@ -13,7 +12,6 @@ const TodoList = ({ todos, changeATodoStatus }) => {
                 <input className="form-check-input" type="checkbox" checked={todo.isFinish} onChange={() => { handleOnChange(todo.id) }} />
                 <label className="form-check-label">
                     {todo.content}
-
                 </label>
 
             </div>

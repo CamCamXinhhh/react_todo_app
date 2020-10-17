@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FilterStatus = () => {
+const FilterStatus = ({ changeDisplayFilter }) => {
     const filterContainer = {
         display: 'flex',
         justifyContent: 'space-evenly',
@@ -13,9 +13,9 @@ const FilterStatus = () => {
     }
     return (
         <div style={filterContainer} className="mb-3">
-            <button style={btn} type="button" className="btn btn-primary">All</button>
-            <button style={btn} type="button" className="btn btn-success">Active</button>
-            <button style={btn} type="button" className="btn btn-dark">Finished</button>
+            <button style={btn} type="button" className="btn btn-primary" onClick={() => { changeDisplayFilter('all') }}>All</button>
+            <button style={btn} type="button" className="btn btn-success" onClick={() => { changeDisplayFilter('active') }}>Active</button>
+            <button style={btn} type="button" className="btn btn-dark" onClick={() => { changeDisplayFilter('finish') }}>Finished</button>
         </div>
     )
 }
